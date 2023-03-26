@@ -67,13 +67,11 @@ const App = () => {
 
   return (
     <div className="flex items-start content-center justify-center h-full sm:items-center">
-      {error && <div>{error.text}</div>}
-      {rates && (
-        <main className="max-w-600 h-auto mx-auto shadow-none">
+        <main className="h-auto mx-auto shadow-none">
           <CurrencySelector
             currencyOne={currencyOne}
             currencyTwo={currencyTwo}
-            rates={rates}
+            rates={rates || []}
             handleChangeOne={handleChangeOne}
             handleChangeTwo={handleChangeTwo}
           />
@@ -89,7 +87,6 @@ const App = () => {
           />
           <Footer time={timestamp} />
         </main>
-      )}
     </div>
   );
 };

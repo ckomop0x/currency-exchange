@@ -109,7 +109,3 @@ a {
     color-scheme: dark;
   }
 }
-
-.main-card {
-    @apply border-solid p-6 rounded-lg shadow-md border border-sky-500;
-}
