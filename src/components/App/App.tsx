@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import config from '../../config';
 import { api, currencyConverter, inputFilter } from '@/helpers';
 
@@ -75,13 +75,13 @@ const App = () => {
             handleChangeOne={handleChangeOne}
             handleChangeTwo={handleChangeTwo}
           />
+
           <CurrencyLine
-            floatingLabelText={currencyOne}
             value={currencyOneValue}
             onChange={changeCurrencyOneValue}
           />
+
           <CurrencyLine
-            floatingLabelText={currencyTwo}
             value={currencyTwoValue}
             onChange={changeCurrencyTwoValue}
           />

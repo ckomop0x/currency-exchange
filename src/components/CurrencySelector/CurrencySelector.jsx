@@ -11,7 +11,7 @@ const CurrencySelector = ({
   rates
 }) => {
   return (
-    <div className="w-auto m-auto text-center flex content-around items-center content-center">
+    <div className="w-auto m-auto text-center flex items-center content-center content-between">
       <DropdownSelector
         currencyNames={Object.keys(rates)}
         currency={currencyOne}

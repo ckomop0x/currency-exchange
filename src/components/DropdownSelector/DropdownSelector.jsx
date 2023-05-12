@@ -6,12 +6,12 @@ const DropdownSelector = ({currency, handleChange, currencyNames}) => {
     handleChange(currencyName);
   };
 
-  return (
-    <select
-      className="w-full h-10"
-      defaultValue={currency}
-      onChange={handleCurrencySelect}
-    >
+  return currencyNames.length > 0 ? (
+      <select
+        className="w-full h-10 border-b-cyan-500 border-b-2 w-40"
+        defaultValue={currency}
+        onChange={handleCurrencySelect}
+      >
       {currencyNames.map((currencyName) => (
         <option
           key={currencyName}
@@ -21,7 +21,7 @@ const DropdownSelector = ({currency, handleChange, currencyNames}) => {
         </option>
       ))}
     </select>
-  );
+  ) : null;
 };
 
 export default memo(DropdownSelector);
