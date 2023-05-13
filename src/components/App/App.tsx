@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import config from '../../config';
 import { api, currencyConverter, inputFilter } from '@/helpers';
 
@@ -26,7 +26,7 @@ const App = () => {
       const dataFromApi = await response.json()
       setTimestamp(dataFromApi.timestamp);
       setRates(dataFromApi.rates);
-    } catch (err) {
+    } catch (err: any) {
       setError({
         error: true,
         errorText: "Can't connect",
@@ -35,27 +35,29 @@ const App = () => {
     }
   }
 
-  const changeCurrencyOneValue = (event) => {
+  const changeCurrencyOneValue = (event: any) => {
     setCurrencyOneValue(inputFilter(event.target.value));
     setCurrencyTwoValue(
+      // @ts-ignore
       currencyConverter(rates[currencyOne], rates[currencyTwo], inputFilter(event.target.value))
     );
   };
 
-  const changeCurrencyTwoValue = (event) => {
+  const changeCurrencyTwoValue = (event: any) => {
     setCurrencyTwoValue(inputFilter(event.target.value));
     setCurrencyOneValue(
+        // @ts-ignore
       currencyConverter(rates[currencyTwo], rates[currencyOne], inputFilter(event.target.value))
     );
   };
 
-  const handleChangeOne = (value) => {
+  const handleChangeOne = (value: any) => {
     setCurrencyOne(value);
     setCurrencyOneValue('');
     setCurrencyTwoValue('');
   };
 
-  const handleChangeTwo = (value) => {
+  const handleChangeTwo = (value: any) => {
     setCurrencyTwo(value);
     setCurrencyOneValue('');
     setCurrencyTwoValue('');
@@ -75,13 +77,13 @@ const App = () => {
             handleChangeOne={handleChangeOne}
             handleChangeTwo={handleChangeTwo}
           />
+
           <CurrencyLine
-            floatingLabelText={currencyOne}
             value={currencyOneValue}
             onChange={changeCurrencyOneValue}
           />
+
           <CurrencyLine
-            floatingLabelText={currencyTwo}
             value={currencyTwoValue}
             onChange={changeCurrencyTwoValue}
           />
