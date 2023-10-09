@@ -9,6 +9,7 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   collectCoverage: true,
+  modulePathIgnorePatterns: ["<rootDir>/e2e/"],
   coverageReporters: ['lcov', 'text', 'html'],
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
