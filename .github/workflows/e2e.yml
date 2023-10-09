@@ -1,10 +1,8 @@
 name: "Tests: E2E"
 
 on:
-  workflow_run:
-    workflows: ['netlify/currency-exchange-application/deploy-preview']
-    types:
-      - succeed
+  workflow_success:
+    workflow: netlify/currency-exchange-application/deploy-preview
 
 env:
   GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
