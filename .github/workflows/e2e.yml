@@ -45,5 +45,5 @@ jobs:
       - name: npm run test:e2e
         run: npm run test:e2e
         env:
-          PLAYWRIGHT_TEST_BASE_URL: "https://deploy-preview-${{env.GITHUB_PR_NUMBER}}--pull-request.netlify.app/"
+          BASE_URL: "https://deploy-preview-${{env.GITHUB_PR_NUMBER}}--currency-exchange-application.netlify.app"
           DEBUG: pw:api
