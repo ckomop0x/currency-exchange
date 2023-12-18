@@ -1,7 +1,6 @@
-import React from 'react';
-
 import DropdownSelector from '../DropdownSelector';
 import { currencyConverter } from '../../helpers';
+import { memo } from "react";
 
 const CurrencySelector = ({
   currencyOne,
@@ -29,4 +28,4 @@ const CurrencySelector = ({
   );
 };
 
-export default React.memo(CurrencySelector);
+export default memo(CurrencySelector);

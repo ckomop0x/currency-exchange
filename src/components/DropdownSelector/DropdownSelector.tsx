@@ -1,6 +1,6 @@
-import {memo} from "react";
+import { memo } from "react";
 
-const DropdownSelector = ({currency, handleChange, currencyNames}) => {
+const DropdownSelector = ({ currency, handleChange, currencyNames }) => {
   const handleCurrencySelect = (event) => {
     const currencyName = event.currentTarget.value
     handleChange(currencyName);
@@ -8,7 +8,7 @@ const DropdownSelector = ({currency, handleChange, currencyNames}) => {
 
   return currencyNames.length > 0 ? (
       <select
-        className="w-full h-10 border-b-cyan-500 border-b-2 w-40"
+        className="w-full h-10 border-b-cyan-500 border-b-2"
         defaultValue={currency}
         onChange={handleCurrencySelect}
       >
