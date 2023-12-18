@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import formatDate from "@/helpers/formatDate";
 
 interface FooterProps {
-  time?: number;
+  time?: number | null;
 }
 
 const Footer: FC<FooterProps> = ({ time }) => {
