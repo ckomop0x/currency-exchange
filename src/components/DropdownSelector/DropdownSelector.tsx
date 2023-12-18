@@ -1,7 +1,8 @@
 import { memo } from "react";
 
+// @ts-ignore
 const DropdownSelector = ({ currency, handleChange, currencyNames }) => {
-  const handleCurrencySelect = (event) => {
+  const handleCurrencySelect = (event: { currentTarget: { value: any; }; }) => {
     const currencyName = event.currentTarget.value
     handleChange(currencyName);
   };
@@ -12,7 +13,7 @@ const DropdownSelector = ({ currency, handleChange, currencyNames }) => {
         defaultValue={currency}
         onChange={handleCurrencySelect}
       >
-      {currencyNames.map((currencyName) => (
+      {currencyNames.map((currencyName: string) => (
         <option
           key={currencyName}
           value={currencyName}
