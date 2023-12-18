@@ -10,21 +10,27 @@ import Footer from "@/components/Footer";
 import { useRates } from "@/hooks/useRates";
 
 const App = () => {
-  const { timestamp, rates, error, getRatesData } = useRates();
+  const { timestamp, rates, getRatesData } = useRates();
   const [currencyOne, setCurrencyOne] = useState("EUR");
   const [currencyTwo, setCurrencyTwo] = useState("USD");
   const [currencyOneValue, setCurrencyOneValue] = useState("");
   const [currencyTwoValue, setCurrencyTwoValue] = useState("");
 
   const changeCurrencyOneValue = (event: any) => {
-    setCurrencyOneValue(inputFilter(event.target.value));
+    const inputValue = parseFloat(event.target.value);
+    const rateCurrencyOne = rates ? rates[currencyOne] : 1;
+    const rateCurrencyTwo = rates ? rates[currencyTwo] : 1;
+
+    if (!isNaN(inputValue)) {
+      setCurrencyOneValue(inputValue.toString());
+    }
+
     setCurrencyTwoValue(
-      // @ts-ignore
       currencyConverter(
-        rates[currencyOne],
-        rates[currencyTwo],
-        inputFilter(event.target.value)
-      )
+        rateCurrencyOne,
+        rateCurrencyTwo,
+        parseFloat(inputFilter(inputValue.toString()))
+      ).toString()
     );
   };
 
@@ -54,7 +60,7 @@ const App = () => {
 
   useEffect(() => {
     void getRatesData();
-  }, []);
+  }, [getRatesData]);
 
   return (
     <div className="flex items-start content-center justify-center h-full sm:items-center">
