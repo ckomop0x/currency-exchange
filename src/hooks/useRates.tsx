@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useCallback, useState} from "react";
 import config from "@/config";
 import {api} from "@/helpers";
 
@@ -11,7 +11,7 @@ export const useRates = () => {
     message: string;
   } | null>(null);
 
-  const getRatesData = async () => {
+  const getRatesData = useCallback(async () => {
     try {
       const response = await api({
         url: `https://openexchangerates.org/api/latest.json?app_id=${config.API_KEY}`,
@@ -26,7 +26,7 @@ export const useRates = () => {
         message: `${err?.message || "Unknown error"}`,
       });
     }
-  };
+  }, []);
 
   return { timestamp, rates, error, getRatesData };
 };
