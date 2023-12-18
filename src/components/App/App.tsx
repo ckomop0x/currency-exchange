@@ -41,7 +41,7 @@ const App = () => {
       currencyConverter(
         rates[currencyTwo],
         rates[currencyOne],
-        inputFilter(event.target.value)
+        Number(inputFilter(event.target.value))
       )
     );
   };
