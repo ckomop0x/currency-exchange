@@ -17,20 +17,14 @@ const App = () => {
   const [currencyTwoValue, setCurrencyTwoValue] = useState("");
 
   const changeCurrencyOneValue = (event: any) => {
-    const inputValue = parseFloat(event.target.value);
-    const rateCurrencyOne = rates ? rates[currencyOne] : 1;
-    const rateCurrencyTwo = rates ? rates[currencyTwo] : 1;
-
-    if (!isNaN(inputValue)) {
-      setCurrencyOneValue(inputValue.toString());
-    }
-
+    setCurrencyOneValue(inputFilter(event.target.value));
     setCurrencyTwoValue(
+      // @ts-ignore
       currencyConverter(
-        rateCurrencyOne,
-        rateCurrencyTwo,
-        parseFloat(inputFilter(inputValue.toString()))
-      ).toString()
+        rates[currencyOne],
+        rates[currencyTwo],
+        parseFloat(inputFilter(inputFilter(event.target.value)))
+      )
     );
   };
 
@@ -41,7 +35,7 @@ const App = () => {
       currencyConverter(
         rates[currencyTwo],
         rates[currencyOne],
-        Number(inputFilter(event.target.value))
+        parseFloat(inputFilter(event.target.value))
       )
     );
   };
