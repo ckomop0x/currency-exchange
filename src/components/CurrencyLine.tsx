@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo } from 'react';
 
 interface CurrencyLineProps {
   value: string;
@@ -8,7 +8,7 @@ interface CurrencyLineProps {
 const CurrencyLine = ({ value, onChange }: CurrencyLineProps): JSX.Element => {
   return (
     <input
-      className="box-border mt-2 first-of-type:mr-10 last-of-type:ml-10 p-2 border-2 border-cyan-700"
+      className="p-2 h-10 border-b-cyan-500 border-b-2 w-full text-right"
       type="text"
       value={value}
       onChange={onChange}

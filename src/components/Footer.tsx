@@ -1,23 +1,38 @@
-import { FC, memo } from "react";
-import formatDate from "@/helpers/formatDate";
+import { FC, memo } from 'react';
+import formatDate from '@/helpers/formatDate';
+import Image from 'next/image';
 
 interface FooterProps {
   time?: number | null;
 }
 
 const Footer: FC<FooterProps> = ({ time }) => {
-  const date = new Date();
-  const year = date.getFullYear();
+  const year = formatDate(new Date(), 'yyyy');
+  let formattedDate = 'not available';
+
+  if (time) {
+    // Create a Date object from the timestamp
+    const date = new Date(time * 1000);
+
+    // Format the date based on the user's browser settings
+    formattedDate = formatDate(date, 'dd.MM.yyyy HH:mm');
+  }
 
   return (
     <>
-      <div className="text-center m-5">
-        Currencies rates timestamp: {time && `${formatDate(time * 1000)}`}
+      <div className="text-center mt-4">
+        Currencies rates timestamp: {time && `${formattedDate}`}
       </div>
-      <div className="text-center font-bold m-5">
+      <div className="font-bold mt-8 flex justify-between	">
         &copy; 2017-{year} &nbsp;
-        <a href="https://ckomop0x.github.io" className="no-underline" style={{ color: '#004d9a' }}>
-          Pavel Klochkov
+        <a href="https://github.com/ckomop0x" className="no-underline">
+          <Image
+            alt="Pavel Klochkov GitHub"
+            src="/github-mark.svg"
+            width={16}
+            height={16}
+            className={'inline-block'}
+          />
         </a>
       </div>
     </>
