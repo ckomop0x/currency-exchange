@@ -1,0 +1,10 @@
+.cache
+public/js/vendor
+public
+__generated__
+apollo.config.js
+schema.json
+src/types/
+.next
+storybook-static/
+coverage/

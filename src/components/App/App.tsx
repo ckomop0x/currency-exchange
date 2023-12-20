@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { currencyConverter, inputFilter } from "@/helpers";
+import { currencyConverter, inputFilter } from '@/helpers';
 
-import CurrencySelector from "@/components/CurrencySelector";
-import CurrencyLine from "@/components/CurrencyLine";
-import Footer from "@/components/Footer";
-import { useRates } from "@/hooks/useRates";
+import CurrencySelector from '@/components/CurrencySelector';
+import CurrencyLine from '@/components/CurrencyLine';
+import Footer from '@/components/Footer';
+import { useRates } from '@/hooks/useRates';
 
 const App = () => {
   const { timestamp, rates, getRatesData } = useRates();
-  const [currencyOne, setCurrencyOne] = useState("EUR");
-  const [currencyTwo, setCurrencyTwo] = useState("USD");
-  const [currencyOneValue, setCurrencyOneValue] = useState("");
-  const [currencyTwoValue, setCurrencyTwoValue] = useState("");
+  const [currencyOne, setCurrencyOne] = useState('EUR');
+  const [currencyTwo, setCurrencyTwo] = useState('USD');
+  const [currencyOneValue, setCurrencyOneValue] = useState('');
+  const [currencyTwoValue, setCurrencyTwoValue] = useState('');
 
   const changeCurrencyOneValue = (event: any) => {
     setCurrencyOneValue(inputFilter(event.target.value));
@@ -23,8 +23,8 @@ const App = () => {
       currencyConverter(
         rates[currencyOne],
         rates[currencyTwo],
-        parseFloat(inputFilter(inputFilter(event.target.value)))
-      )
+        parseFloat(inputFilter(inputFilter(event.target.value))),
+      ),
     );
   };
 
@@ -35,21 +35,21 @@ const App = () => {
       currencyConverter(
         rates[currencyTwo],
         rates[currencyOne],
-        parseFloat(inputFilter(event.target.value))
-      )
+        parseFloat(inputFilter(event.target.value)),
+      ),
     );
   };
 
   const handleChangeOne = (value: any) => {
     setCurrencyOne(value);
-    setCurrencyOneValue("");
-    setCurrencyTwoValue("");
+    setCurrencyOneValue('');
+    setCurrencyTwoValue('');
   };
 
   const handleChangeTwo = (value: any) => {
     setCurrencyTwo(value);
-    setCurrencyOneValue("");
-    setCurrencyTwoValue("");
+    setCurrencyOneValue('');
+    setCurrencyTwoValue('');
   };
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const App = () => {
   }, [getRatesData]);
 
   return (
-    <div className="flex items-start content-center justify-center h-full sm:items-center">
+    <div className="flex items-start content-center justify-center h-full sm:items-center mt-8 w-100%">
       <main className="h-auto mx-auto shadow-none">
         <CurrencySelector
           currencyOne={currencyOne}
@@ -65,19 +65,21 @@ const App = () => {
           rates={rates || []}
           handleChangeOne={handleChangeOne}
           handleChangeTwo={handleChangeTwo}
+          currencyOneValue={currencyOneValue}
+          changeCurrencyOneValue={changeCurrencyOneValue}
+          currencyTwoValue={currencyTwoValue}
+          changeCurrencyTwoValue={changeCurrencyTwoValue}
         />
-        <div className="w-auto m-auto text-center flex items-center content-center content-between">
-          <CurrencyLine
-              value={currencyOneValue}
-              onChange={changeCurrencyOneValue}
-          />
 
-          <CurrencyLine
-              value={currencyTwoValue}
-              onChange={changeCurrencyTwoValue}
-          />
+        <div className="h-auto mt-4">
+          {rates ? (
+            <>
+              1 {currencyOne} ={' '}
+              {currencyConverter(rates[currencyOne], rates[currencyTwo], 1, 4)}{' '}
+              {currencyTwo}
+            </>
+          ) : null}
         </div>
-
         <Footer time={timestamp} />
       </main>
     </div>
