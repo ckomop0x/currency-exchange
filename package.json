@@ -13,8 +13,8 @@
   "dependencies": {
     "@playwright/test": "^1.40.1",
     "@types/node": "20.12.5",
-    "@types/react": "18.2.74",
-    "@types/react-dom": "18.2.23",
+    "@types/react": "18.2.78",
+    "@types/react-dom": "18.2.25",
     "date-fns": "^3.3.1",
     "eslint": "8.57.0",
     "eslint-config-next": "14.1.4",
