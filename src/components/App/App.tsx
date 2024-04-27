@@ -17,42 +17,6 @@ const App = () => {
   const [currencyOneValue, setCurrencyOneValue] = useState('');
   const [currencyTwoValue, setCurrencyTwoValue] = useState('');
 
-  const changeCurrencyOneValue = (event: any) => {
-    setCurrencyOneValue(inputFilter(event.target.value));
-    setCurrencyTwoValue(
-      // @ts-ignore
-      currencyConverter(
-        rates[currencyOne],
-        rates[currencyTwo],
-        parseFloat(inputFilter(inputFilter(event.target.value))),
-      ),
-    );
-  };
-
-  const changeCurrencyTwoValue = (event: any) => {
-    setCurrencyTwoValue(inputFilter(event.target.value));
-    setCurrencyOneValue(
-      // @ts-ignore
-      currencyConverter(
-        rates[currencyTwo],
-        rates[currencyOne],
-        parseFloat(inputFilter(event.target.value)),
-      ),
-    );
-  };
-
-  const handleChangeOne = (value: any) => {
-    setCurrencyOne(value);
-    setCurrencyOneValue('');
-    setCurrencyTwoValue('');
-  };
-
-  const handleChangeTwo = (value: any) => {
-    setCurrencyTwo(value);
-    setCurrencyOneValue('');
-    setCurrencyTwoValue('');
-  };
-
   useEffect(() => {
     void getRatesData();
   }, [getRatesData]);
@@ -64,12 +28,12 @@ const App = () => {
           currencyOne={currencyOne}
           currencyTwo={currencyTwo}
           rates={rates || []}
-          handleChangeOne={handleChangeOne}
-          handleChangeTwo={handleChangeTwo}
           currencyOneValue={currencyOneValue}
-          changeCurrencyOneValue={changeCurrencyOneValue}
           currencyTwoValue={currencyTwoValue}
-          changeCurrencyTwoValue={changeCurrencyTwoValue}
+          setCurrencyOne={setCurrencyOne}
+          setCurrencyTwo={setCurrencyTwo}
+          setCurrencyOneValue={setCurrencyOneValue}
+          setCurrencyTwoValue={setCurrencyTwoValue}
         />
         <Rates
           rates={rates}
