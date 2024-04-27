@@ -8,6 +8,7 @@ import CurrencySelector from '@/components/CurrencySelector';
 import CurrencyLine from '@/components/CurrencyLine';
 import Footer from '@/components/Footer';
 import { useRates } from '@/hooks/useRates';
+import Rates from '@/components/Rates/Rates';
 
 const App = () => {
   const { timestamp, rates, getRatesData } = useRates();
@@ -70,16 +71,11 @@ const App = () => {
           currencyTwoValue={currencyTwoValue}
           changeCurrencyTwoValue={changeCurrencyTwoValue}
         />
-
-        <div className="h-auto mt-4">
-          {rates ? (
-            <>
-              1 {currencyOne} ={' '}
-              {currencyConverter(rates[currencyOne], rates[currencyTwo], 1, 4)}{' '}
-              {currencyTwo}
-            </>
-          ) : null}
-        </div>
+        <Rates
+          rates={rates}
+          currencyOne={currencyOne}
+          currencyTwo={currencyTwo}
+        />
         <Footer time={timestamp} />
       </main>
     </div>

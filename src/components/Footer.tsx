@@ -21,7 +21,7 @@ const Footer: FC<FooterProps> = ({ time }) => {
   return (
     <>
       <div className="text-center mt-4">
-        Currencies rates timestamp: {time && `${formattedDate}`}
+        Currencies rates timestamp: {`${formattedDate}`}
       </div>
       <div className="font-bold mt-8 flex justify-between	">
         &copy; 2017-{year} &nbsp;
