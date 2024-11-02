@@ -4,7 +4,7 @@ import {api} from "@/helpers";
 
 export const useRates = () => {
   const [timestamp, setTimestamp] = useState<number | null>(null);
-  const [rates, setRates] = useState<any | null>(null);
+  const [rates, setRates] = useState<Record<string, number>>({});
   const [error, setError] = useState<{
     error: boolean;
     errorText: string;
@@ -19,11 +19,11 @@ export const useRates = () => {
       const dataFromApi = await response.json();
       setTimestamp(dataFromApi.timestamp);
       setRates(dataFromApi.rates);
-    } catch (err: any) {
+    } catch {
       setError({
         error: true,
         errorText: "Can't connect",
-        message: `${err?.message || "Unknown error"}`,
+        message: "Unknown error",
       });
     }
   }, []);

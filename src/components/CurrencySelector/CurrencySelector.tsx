@@ -39,7 +39,7 @@ const CurrencySelector = ({
     setCurrencyTwoValue('');
   };
 
-  const changeCurrencyTwoValue = (event: any) => {
+  const changeCurrencyTwoValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrencyTwoValue(inputFilter(event.target.value));
     setCurrencyOneValue(
       currencyConverter(
@@ -50,7 +50,7 @@ const CurrencySelector = ({
     );
   };
 
-  const changeCurrencyOneValue = (event: any) => {
+  const changeCurrencyOneValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrencyOneValue(inputFilter(event.target.value));
     setCurrencyTwoValue(
       currencyConverter(
