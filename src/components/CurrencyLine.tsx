@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 interface CurrencyLineProps {
   value: string;
-  onChange(event: any): void;
+  onChange(event: unknown): void;
 }
 
 const CurrencyLine = ({ value, onChange }: CurrencyLineProps): JSX.Element => {

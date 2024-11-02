@@ -1,8 +1,13 @@
-import { memo } from 'react';
+import { FC, memo } from 'react';
 
-// @ts-ignore
-const DropdownSelector = ({ currency, handleChange, currencyNames }) => {
-  const handleCurrencySelect = (event: { currentTarget: { value: any } }) => {
+interface DropdownSelectorProps {
+  currency: string;
+  handleChange(value: string): void;
+  currencyNames: string[];
+}
+
+const DropdownSelector: FC<DropdownSelectorProps> = ({ currency, handleChange, currencyNames }) => {
+  const handleCurrencySelect = (event: { currentTarget: { value: string } }) => {
     const currencyName = event.currentTarget.value;
     handleChange(currencyName);
   };

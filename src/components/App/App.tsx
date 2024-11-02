@@ -2,10 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { currencyConverter, inputFilter } from '@/helpers';
-
 import CurrencySelector from '@/components/CurrencySelector';
-import CurrencyLine from '@/components/CurrencyLine';
 import Footer from '@/components/Footer';
 import { useRates } from '@/hooks/useRates';
 import Rates from '@/components/Rates/Rates';
