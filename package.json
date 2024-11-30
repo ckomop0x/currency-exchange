@@ -24,7 +24,7 @@
     "typescript": "5.7.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.1.0",
+    "@eslint/eslintrc": "3.2.0",
     "@eslint/js": "9.16.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.0.1",
