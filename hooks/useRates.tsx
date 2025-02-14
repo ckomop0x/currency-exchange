@@ -1,6 +1,5 @@
-import {useCallback, useState} from "react";
-import config from "../config";
-import {api} from "../helpers";
+import { useEffect, useState } from 'react';
+import { getRatesData } from '../server/actions/getRatesData';
 
 export const useRates = () => {
   const [timestamp, setTimestamp] = useState<number | null>(null);
@@ -11,22 +10,21 @@ export const useRates = () => {
     message: string;
   } | null>(null);
 
-  const getRatesData = useCallback(async () => {
-    try {
-      const response = await api({
-        url: `https://openexchangerates.org/api/latest.json?app_id=${config.API_KEY}`,
-      });
-      const dataFromApi = await response.json();
-      setTimestamp(dataFromApi.timestamp);
-      setRates(dataFromApi.rates);
-    } catch {
-      setError({
-        error: true,
-        errorText: "Can't connect",
-        message: "Unknown error",
-      });
-    }
-  }, []);
+  const getRates = async () => {
+    const ratesFromApi = await getRatesData();
+    return ratesFromApi;
+  };
 
-  return { timestamp, rates, error, getRatesData };
+  useEffect(() => {
+    const fetchRates = async () => {
+      const apiData = await getRatesData();
+      console.log(apiData);
+
+      setRates(apiData.rates);
+      setTimestamp(apiData.timestamp);
+    };
+    fetchRates();
+  }, [getRatesData]);
+
+  return { timestamp, rates, error };
 };

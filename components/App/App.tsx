@@ -8,15 +8,11 @@ import { useRates } from '../../hooks/useRates';
 import Rates from '../Rates/Rates';
 
 const App = () => {
-  const { timestamp, rates, getRatesData } = useRates();
+  const { timestamp, rates } = useRates();
   const [currencyOne, setCurrencyOne] = useState('EUR');
   const [currencyTwo, setCurrencyTwo] = useState('USD');
   const [currencyOneValue, setCurrencyOneValue] = useState('');
   const [currencyTwoValue, setCurrencyTwoValue] = useState('');
-
-  useEffect(() => {
-    void getRatesData();
-  }, [getRatesData]);
 
   return (
     <div className="flex items-start content-center justify-center h-full sm:items-center mt-8 w-100%">
