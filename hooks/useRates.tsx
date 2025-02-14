@@ -18,7 +18,6 @@ export const useRates = () => {
   useEffect(() => {
     const fetchRates = async () => {
       const apiData = await getRatesData();
-      console.log(apiData);
 
       setRates(apiData.rates);
       setTimestamp(apiData.timestamp);
