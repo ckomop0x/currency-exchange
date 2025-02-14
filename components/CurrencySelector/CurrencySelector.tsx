@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import DropdownSelector from '../DropdownSelector';
 import CurrencyLine from '../CurrencyLine';
-import { currencyConverter, inputFilter } from '@/helpers';
+import { currencyConverter, inputFilter } from '../../helpers';
 
 interface CurrencySelectorProps {
   currencyOne: string;

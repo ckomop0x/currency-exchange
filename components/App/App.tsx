@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 
-import CurrencySelector from '@/components/CurrencySelector';
-import Footer from '@/components/Footer';
-import { useRates } from '@/hooks/useRates';
-import Rates from '@/components/Rates/Rates';
+import CurrencySelector from '../CurrencySelector';
+import Footer from '../Footer';
+import { useRates } from '../../hooks/useRates';
+import Rates from '../Rates/Rates';
 
 const App = () => {
   const { timestamp, rates, getRatesData } = useRates();

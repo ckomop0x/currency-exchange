@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import formatDate from '@/helpers/formatDate';
+import formatDate from '../helpers/formatDate';
 import Image from 'next/image';
 
 interface FooterProps {

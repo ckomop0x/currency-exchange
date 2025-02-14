@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { currencyConverter } from '@/helpers';
+import { currencyConverter } from '../../helpers';
 
 interface RatesProps {
   currencyOne: string;

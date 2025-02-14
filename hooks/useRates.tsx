@@ -1,6 +1,6 @@
 import {useCallback, useState} from "react";
-import config from "@/config";
-import {api} from "@/helpers";
+import config from "../config";
+import {api} from "../helpers";
 
 export const useRates = () => {
   const [timestamp, setTimestamp] = useState<number | null>(null);

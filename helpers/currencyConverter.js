@@ -1,4 +1,4 @@
-import { pow } from './';
+import { pow } from './index';
 
 /**
  * Converts a value from one currency to another.
