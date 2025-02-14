@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'HomeAway',
-  description: 'Feel at home, away from home',
+  title: 'Currency Exchange',
+  description: 'Currency exchange rates',
 };
 
 export default function RootLayout({
